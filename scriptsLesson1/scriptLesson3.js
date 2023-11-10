@@ -26,3 +26,36 @@
 // Promise.any([myPromise1,myPromise2,myPromise3]).then((data)=>{
 //     console.log(data)})
 
+
+
+// function bigFunc  () {
+//
+//     let count = 0
+//
+//     function smallFunc () {
+//
+//         count++
+//         console.log(count)
+//     }
+//
+//     return smallFunc
+//
+// }
+//
+//
+// const outFunc = bigFunc()
+//
+// outFunc()
+// outFunc()
+// outFunc()
+
+
+console.log("start")
+
+setTimeout(function(){
+    console.log("inside Timeout")
+}
+,0)
+
+console.log("finish")
+
