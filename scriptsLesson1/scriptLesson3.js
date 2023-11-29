@@ -16,12 +16,34 @@
 //     .catch(err => console.log("eh", err))
 
 
+function delayResolve(resolveArgument, ms) {
+    return new Promise(res =>
+        setTimeout(() => res(resolveArgument)
+            , ms)
+    )
+}
+
+function delayReject(rejectArgument, ms) {
+    return new Promise((_,rej) =>
+        setTimeout(() => rej(rejectArgument)
+            , ms)
+    )
+}
 
 
+const prom1 = delayResolve("res1", 2000)
+// const prom2 = delayResolve("res2", 1000)
+const prom2 = delayReject("err2", 1000)
+const prom3 = delayResolve("res3", 10000)
 
-(async () => {
-    const pr1 = Promise.resolve("rrr")
-    return await pr1
-})()
-    .then(data => console.log(data))
+Promise.all([prom1, prom2, prom3])
+    .then(data => console.log("data of 'all': ", data))
+    .catch(err=> console.log("err of 'all'",err))
 
+Promise.race([prom1, prom2, prom3])
+    .then(data => console.log("data of 'race': ", data))
+    .catch(err=> console.log("err of 'race'",err))
+
+Promise.any([prom1, prom2, prom3])
+    .then(data => console.log("data of 'any': ", data))
+    .catch(err=> console.log("err of 'any'",err))
