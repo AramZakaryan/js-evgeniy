@@ -38,3 +38,30 @@
 // // 3 4 6 7 9 10   5 8   1 2     
 //
 //
+
+
+const myPromise = (delay) => {
+    return new Promise((res, rej) => {
+            setTimeout(res, delay)
+        }
+    )
+}
+
+setTimeout(() => {
+    console.log("in setTimeout1")
+}, 1000)
+
+
+myPromise(1000).then(() => console.log("in Promise 1"));
+
+setTimeout(() => {
+    console.log("in setTimeout2");
+}, 100)
+
+
+myPromise(2000).then(() =>
+    console.log("in Promise 2"));
+
+
+
+//   s2 s1 p1 p2                    micro                 macro s2 (100) s1(1000) p1(1000) p2(2000)
