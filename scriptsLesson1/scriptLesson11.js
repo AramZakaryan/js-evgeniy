@@ -239,7 +239,6 @@ class Car {
 
 }
 
-
 const car1 = new Car("bmw")
 
 console.log(car1);
