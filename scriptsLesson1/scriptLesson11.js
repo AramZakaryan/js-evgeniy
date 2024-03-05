@@ -227,26 +227,124 @@
 //
 
 
+// class Car {
+//     constructor(mark, speed) {
+//         if (!speed) {
+//             this.mark = mark
+//         } else {
+//             this.mark = mark
+//             this.speed = speed
+//         }
+//     }
+//
+// }
+//
+// const car1 = new Car("bmw")
+//
+// console.log(car1);
+
+
+// class Car {
+//
+//     constructor(mark, speed) {
+//         this.mark = mark
+//         this.speed = speed
+//     }
+//
+// }
+//
+// class SuperCar extends Car {
+//
+//     constructor(mark, speed, luxOptions) {
+//         super(mark, speed)
+//         this.luxOptions = luxOptions
+//     }
+//
+// }
+//
+// const car1 = new SuperCar("bmw-m", 300, true)
+
+
+// class Car {
+//
+//     constructor(mark, speed) {
+//         this.mark = mark
+//         this.speed = speed
+//     }
+//
+// }
+//
+// class SuperCar extends Car {
+//
+//     constructor(mark, speed) {
+//         super(mark, speed)
+//     }
+//
+//     greed () {
+//         console.log("Hi SuperCar")}
+//
+// }
+//
+// const car1 = new SuperCar("bmw-m", 300)
+//
+// console.log(car1);
+//
+// car1.greed()
+
+
+// class Car {
+//
+//     constructor(mark, speed) {
+//         this.mark = mark
+//         this.speed = speed
+//     }
+//
+// }
+//
+// class SuperCar extends Car {
+//
+//     greatColor = "red"
+//
+//     greed () {
+//         console.log("Hi SuperCar")}
+//
+// }
+//
+// const car1 = new SuperCar("bmw-m", 300)
+//
+// console.log(car1);
+
+
+// class Car {
+//
+//     constructor(mark, speed) {
+//         this.mark = mark
+//         this.speed = speed
+//     }
+//    
+//     static greet () {
+//         console.log("this is: "+this)
+//     }
+//    
+// }
+//
+// class SuperCar extends Car {
+//  
+//     super= true
+// }
+//
+// SuperCar.greet()
+
+
 class Car {
+
     constructor(mark, speed) {
-        if (!speed) {
-            this.mark = mark
-        } else {
-            this.mark = mark
-            this.speed = speed
-        }
+        this.mark = mark
+        this.speed = speed
     }
 
 }
 
-const car1 = new Car("bmw")
+const car1 = new Car("bmw", 250)
 
-console.log(car1);
-
-
-
-
-
-
-
-
+console.log(car1 instanceof Car)
