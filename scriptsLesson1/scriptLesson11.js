@@ -239,6 +239,7 @@ class Car {
 
 }
 
+
 const car1 = new Car("bmw")
 
 
