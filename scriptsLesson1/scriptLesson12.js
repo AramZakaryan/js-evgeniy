@@ -82,7 +82,7 @@
 //
 //
 // // console.log(superCar1)
-
+//
 //
 // function Car(mark, speed) {
 //     this.mark = mark
@@ -107,7 +107,7 @@
 //     Car.call(this, mark, speed)
 //
 //     this.canFly = canFly
-//    
+//
 // }
 //
 //
@@ -126,42 +126,105 @@
 // // SuperCar.validateSpeed(33)
 //
 //
-// SuperCar.prototype.__proto__=Car.prototype
+// SuperCar.prototype.__proto__ = Car.prototype
 //
 //
 // // superCar1.greet()
 //
 //
-// console.log(SuperCar.call===Function.prototype.call)
+// console.log(SuperCar.call === Function.prototype.call)
 //
 //
 // console.log(superCar1 instanceof Car)
 
 
-class Car {
-    constructor(mark, speed) {
-        this.mark = mark
-        this.speed = speed
-    }
-    greet  () {
-        // console.log(this.mark);
-        return this.prototype
+////////// Object.create
+
+// super-constructor-function
+function Car(mark, speed) {
+    this.mark = mark
+    this.speed = speed
+}
+
+// super-constructor-function method
+Car.prototype.greet = function () {
+    console.log(`Hello ${this.mark} !`);
+}
+
+// super-constructor-function static method
+Car.validateSpeed = function (speed) {
+    if (speed > 0 && speed < 300) {
+        console.log(speed + " is a valid speed")
+    } else {
+        console.log(speed + " is NOT a valid speed")
     }
 }
 
+// sub-constructor-function
+function SuperCar(mark, speed, canFly) {
+    Car.call(this, mark, speed)
+    this.canFly = canFly
+}
 
-const car1 = new Car("mers", 100)
+// ///// extends by Object.create
+// SuperCar.prototype = Object.create(Car.prototype, {
+//     constructor: {
+//         value: SuperCar
+//     }
+// })
 
-// console.log(car1)
-console.log(car1.greet())
+// instance of sub-constructor-function
+const superCar1 = new SuperCar("mers", 150, true)
+
+console.log(superCar1)
+// console.log(superCar1 instanceof SuperCar)
+
+// transition of static method from super-constructor-function to sub-constructor-function
+SuperCar.__proto__=Car // !!!
+SuperCar.validateSpeed(33)
+// console.log(SuperCar.validateSpeed === Car.validateSpeed)
+
+// transition of (ordinary) method from super-constructor-function to sub-constructor-function
+SuperCar.prototype.__proto__ = Car.prototype // !!!
+
+superCar1.greet()
+console.log(superCar1.greet === Car.prototype.greet)
+
+SuperCar.prototype.saySpeed = function () {
+    console.log(this.speed)}
+
+superCar1.saySpeed()
+console.log(SuperCar.prototype.saySpeed)
+console.log(Car.prototype.saySpeed)
 
 
 
 
 
-
-
-
+// class Car {
+//     constructor(mark, speed) {
+//         this.mark = mark
+//         this.speed = speed
+//     }
+//     greet  () {
+//         // console.log(this.mark);
+//         return this.prototype
+//     }
+// }
+//
+//
+// const car1 = new Car("mers", 100)
+//
+// // console.log(car1)
+// console.log(car1.greet())
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
